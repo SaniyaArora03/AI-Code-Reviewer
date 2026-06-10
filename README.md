@@ -1,38 +1,48 @@
-AI Code Reviewer
-Overview
+# AI Code Reviewer
 
-An intelligent code review platform that combines Machine Learning, Code Embeddings, Retrieval-Augmented Generation (RAG), and Large Language Models to automatically analyze source code, detect potential defects, retrieve similar bug patterns, and generate detailed code review reports with suggested fixes.
+## Overview
 
-Features
-Automated code quality analysis
-Defect prediction using Machine Learning
-Code embeddings using CodeBERT
-Similar bug retrieval using FAISS
-AI-generated review reports
-Suggested fixes and best practices
-FastAPI backend
-React frontend
-REST API integration
+AI Code Reviewer is an end-to-end intelligent code analysis platform that combines **Machine Learning, Code Embeddings, Retrieval-Augmented Generation (RAG), and Large Language Models (LLMs)** to automatically review source code, identify potential defects, retrieve similar bug patterns, and generate detailed explanations with suggested fixes.
 
-Architecture
+The system leverages **CodeBERT embeddings**, a **Random Forest classifier**, **FAISS vector search**, and **DeepSeek LLM** to provide context-aware code reviews through a React web application and Chrome browser extension.
+
+---
+
+## Key Highlights
+
+* Automated AI-powered code review
+* Defect prediction using Machine Learning
+* Semantic code understanding with CodeBERT
+* Retrieval-Augmented Generation (RAG)
+* Similar bug pattern search using FAISS
+* AI-generated explanations and code fixes
+* React frontend and FastAPI backend
+* Chrome Extension integration
+* End-to-end ML + RAG + LLM pipeline
+
+---
+
+## System Architecture
+
+```text
 User Code
     │
     ▼
-CodeBERT
+CodeBERT Embeddings
     │
     ▼
 Embedding Vector
     │
-    ├─────────────► Random Forest
-    │                    │
-    │                    ▼
-    │             Defect Prediction
+    ├──────────────► Random Forest Classifier
+    │                       │
+    │                       ▼
+    │                Defect Prediction
     │
     ▼
-FAISS Vector Search
+FAISS Vector Database
     │
     ▼
-Similar Bug Examples
+Similar Bug Retrieval
     │
     ▼
 Prompt Construction
@@ -42,65 +52,172 @@ DeepSeek LLM (OpenRouter)
     │
     ▼
 AI Review Report
+```
 
-Tech Stack
-Machine Learning
--Scikit-Learn
--Random Forest
-Deep Learning
--Hugging Face Transformers
--Microsoft CodeBERT
-Retrieval
--FAISS
-LLM
--DeepSeek V3
--OpenRouter API
-Backend
--FastAPI
--Uvicorn
-Frontend
--React
--Axios
-Dataset
--CodeXGLUE Defect Detection Dataset
+---
 
-Workflow
-Step 1: Dataset Preparation
+## Technical Specifications
 
-The CodeXGLUE Defect Detection dataset is downloaded and converted into a structured dataset suitable for model training.
+### Machine Learning
 
-Step 2: Embedding Generation
+* Random Forest Classifier
+* Scikit-Learn
+* Defect Detection Model
+* Probability-based Confidence Scoring
 
-Code snippets are converted into dense vector representations using Microsoft's CodeBERT model.
+### Deep Learning
 
-Step 3: Defect Prediction
+* Microsoft CodeBERT
+* Hugging Face Transformers
+* 768-Dimensional Semantic Code Embeddings
 
-A Random Forest classifier predicts whether a submitted code snippet is likely to contain defects.
+### Retrieval-Augmented Generation (RAG)
 
-Step 4: Similar Bug Retrieval
+* FAISS Vector Database
+* Similar Bug Retrieval
+* Context-Aware Prompt Augmentation
 
-FAISS performs vector similarity search to retrieve code snippets that are semantically similar to the submitted code.
+### Large Language Model
 
-Step 5: AI Review Generation
+* DeepSeek V3
+* OpenRouter API Integration
+* Automated Code Explanation & Fix Generation
 
-The submitted code, classifier prediction, and retrieved examples are combined into a prompt and sent to DeepSeek via OpenRouter.
+### Backend
 
-Step 6: Result Delivery
+* FastAPI
+* Uvicorn
+* REST APIs
+* JSON Response Pipeline
 
-A detailed review report containing:
+### Frontend
 
-Issue Summary
-Root Cause
-Severity
-Suggested Improvements
-Corrected Code
-Best Practices
+* React
+* Axios
 
-is returned to the user.
 
-Running the Backend
+### Browser Extension
+
+* Chrome Extension (Manifest V3)
+* Context Menu Integration
+* Real-Time Code Review
+
+---
+
+## Dataset
+
+**CodeXGLUE Defect Detection Dataset**
+
+Used for:
+
+* Defect Classification
+* Embedding Generation
+* Similar Bug Retrieval
+* Model Training & Evaluation
+
+---
+
+## Workflow
+
+### 1. Code Submission
+
+Users submit code through:
+
+* React Web Application
+* Chrome Browser Extension
+
+### 2. Semantic Embedding Generation
+
+The submitted code is converted into a dense semantic representation using CodeBERT.
+
+### 3. Defect Prediction
+
+The embedding vector is passed to a Random Forest model which predicts whether the code is potentially defective.
+
+### 4. Similar Bug Retrieval
+
+FAISS performs vector similarity search to retrieve semantically similar code snippets from the indexed dataset.
+
+### 5. AI Review Generation
+
+The following information is combined:
+
+* User Code
+* Defect Prediction
+* Similar Retrieved Examples
+
+and sent to DeepSeek for analysis.
+
+### 6. Review Delivery
+
+The system generates:
+
+* Issue Summary
+* Root Cause Analysis
+* Severity Assessment
+* Suggested Improvements
+* Corrected Code
+* Best Practices
+
+---
+
+## Tech Stack
+
+| Layer             | Technology                  |
+| ----------------- | --------------------------- |
+| Language          | Python, JavaScript          |
+| ML                | Scikit-Learn, Random Forest |
+| Embeddings        | CodeBERT                    |
+| Vector Search     | FAISS                       |
+| LLM               | DeepSeek V3                 |
+| API               | OpenRouter                  |
+| Backend           | FastAPI                     |
+| Frontend          | React                       |
+| Browser Extension | Chrome Extension            |
+| Dataset           | CodeXGLUE                   |
+
+---
+
+## Running the Project
+
+### Backend
+
+```bash
 uvicorn backend.main:app --reload
+```
 
-Running the Frontend
+### Frontend
+
+```bash
 cd frontend
+npm install
 npm run dev
+```
+
+---
+
+## Future Enhancements
+
+* Multi-class bug categorization
+* Security vulnerability detection
+* Automated code refactoring suggestions
+* Support for multiple programming languages
+* VS Code extension integration
+* Fine-tuned CodeBERT classifier
+
+---
+
+## Project Impact
+
+This project demonstrates practical experience with:
+
+* Machine Learning
+* Deep Learning
+* Retrieval-Augmented Generation (RAG)
+* Vector Databases
+* Large Language Models
+* Full-Stack Development
+* Browser Extension Development
+* API Design & Integration
+
+making it a strong portfolio project for Software Engineering, AI/ML Engineering, and Generative AI roles.
