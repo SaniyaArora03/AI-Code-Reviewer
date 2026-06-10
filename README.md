@@ -221,3 +221,4 @@ This project demonstrates practical experience with:
 * API Design & Integration
 
 making it a strong portfolio project for Software Engineering, AI/ML Engineering, and Generative AI roles.
+![alt text](image.png)
