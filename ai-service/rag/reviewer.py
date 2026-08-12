@@ -116,6 +116,9 @@ Return detailed technical explanations.
             "temperature": 0.2,
             "max_tokens": 800
         }
+        print("\n========== PROMPT SENT TO LLM ==========")
+        print(prompt)
+        print("========================================\n")
 
         response = requests.post(
             self.url,

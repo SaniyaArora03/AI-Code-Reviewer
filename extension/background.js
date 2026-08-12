@@ -1,26 +1,24 @@
 chrome.runtime.onInstalled.addListener(() => {
-
   chrome.contextMenus.create({
     id: "reviewCode",
     title: "Review With AI",
     contexts: ["selection"]
   });
-
 });
 
+chrome.contextMenus.onClicked.addListener(async (info, tab) => {
 
-chrome.contextMenus.onClicked.addListener(
-  async (info, tab) => {
+  if (info.menuItemId !== "reviewCode")
+    return;
 
-    if (info.menuItemId !== "reviewCode")
-      return;
+  const selectedCode = info.selectionText || "";
 
-    const selectedCode =
-      info.selectionText;
+  console.log("NEW SELECTED CODE:");
+  console.log(selectedCode);
 
-    chrome.storage.local.set({
-      selectedCode
-    });
+  await chrome.storage.local.set({
+    selectedCode: selectedCode
+  });
 
-  }
-);
+  console.log("Saved selected code.");
+});
